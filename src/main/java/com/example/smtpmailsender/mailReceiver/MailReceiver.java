@@ -10,7 +10,7 @@ public class MailReceiver {
 
     static {
         try {
-            outputStream = new FileOutputStream(System.getProperty("user.dir")+"\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\input_text");
+            outputStream = new FileOutputStream(System.getProperty("user.dir") + "\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\input_text");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -22,30 +22,22 @@ public class MailReceiver {
 
         Folder inbox = store.getFolder("INBOX");
         inbox.open(Folder.READ_ONLY);
-
         Message[] messages = inbox.getMessages();
         if (messages != null) {
             for (Message message : messages) {
                 message.writeTo(System.out);
                 message.writeTo(outputStream);
-            };
-        }else {
-            InputStream inputstream;
-            try {
-                inputstream = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\input_text");
-
-                int data = inputstream.read();
-                while (data != -1) {
-                    System.out.println(data);
-
-                    data = inputstream.read();
-
-                }
-                inputstream.close();
-            } catch (IOException e1) {
-                e1.printStackTrace();
             }
         }
+        BufferedReader in =
+                new BufferedReader(new FileReader(System.getProperty("user.dir") +
+                        "\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\input_text"));
+        String line;
+        while ((line = in.readLine()) != null) {
+            System.out.println(line);
+        }
+        in.close();
+
 
         inbox.close(false);
         store.close();

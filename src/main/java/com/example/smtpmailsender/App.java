@@ -46,19 +46,18 @@ public class App {
         String toMail = "";
         String subject = "";
         String body = "";
-        while (sendAndReceive){
+        while (sendAndReceive) {
             int receiveOrSend = 0;
             System.out.println("""
                     1- To receive Mails
                     2- To send Mails""");
             receiveOrSend = scan.nextInt();
-            if (receiveOrSend == 1){
+            if (receiveOrSend == 1) {
                 Session POP3session = Session.getDefaultInstance(POP3props, auth);
                 System.out.println("Session created");
                 MailReceiver.receiveMail(POP3session, fromMail, password);
                 receiveOrSend = 0;
-            }
-            else{
+            } else {
                 Session SMTPsession = Session.getDefaultInstance(SMTPprops, auth);
                 System.out.println("Session created");
                 att = 0;
@@ -80,26 +79,30 @@ public class App {
                 subject = scan.next();
                 System.out.println("Now enter the body");
                 body = scan.next();
-                if(att == 1){
+                if (att == 1) {
                     System.out.println("""
                             1 to img
                             2 to txt""");
                     int choice = 0;
                     choice = scan.nextInt();
-                    if (choice == 1){MailSender.sendAttachmentEmail(SMTPsession,toMail,subject,body,
-                            System.getProperty("user.dir")+"\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\rede.png");}
-                    else{ MailSender.sendAttachmentEmail(SMTPsession,toMail,subject,body,
-                            System.getProperty("user.dir")+"\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\attachment.txt");}
-                }else {
+                    if (choice == 1) {
+                        MailSender.sendAttachmentEmail(SMTPsession, toMail, subject, body,
+                                System.getProperty("user.dir") + "\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\rede.png");
+                    } else {
+                        MailSender.sendAttachmentEmail(SMTPsession, toMail, subject, body,
+                                System.getProperty("user.dir") + "\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\attachment.txt");
+                    }
+                } else {
                     MailSender.sendEmail(SMTPsession, toMail, subject, body);
                 }
                 System.out.println("""
-                            You wanna send another Email or receive the emails?
-                            True to yes
-                            False to no
-                            """);
+                        You wanna send another Email or receive the emails?
+                        True to yes
+                        False to no
+                        """);
                 sendAndReceive = scan.nextBoolean();
                 receiveOrSend = 0;
-        }}
+            }
+        }
     }
 }
