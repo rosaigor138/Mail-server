@@ -10,7 +10,7 @@ public class MailReceiver {
 
     static {
         try {
-            outputStream = new FileOutputStream("C:\\Users\\Igor Rosa\\Desktop\\GITHUB-PROJECTS\\SMTP-MailSender\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\input_text");
+            outputStream = new FileOutputStream(System.getProperty("user.dir")+"\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\input_text");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -32,7 +32,7 @@ public class MailReceiver {
         }else {
             InputStream inputstream;
             try {
-                inputstream = new FileInputStream("C:\\Users\\Igor Rosa\\Desktop\\GITHUB-PROJECTS\\SMTP-MailSender\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\input_text");
+                inputstream = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\input_text");
 
                 int data = inputstream.read();
                 while (data != -1) {

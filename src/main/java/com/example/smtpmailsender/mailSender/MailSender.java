@@ -74,7 +74,7 @@ public class MailSender {
             messageBodyPart.setFileName(fileName);
             multipart.addBodyPart(messageBodyPart);
 
-            if (fileName.equals("C:\\Users\\Igor Rosa\\Desktop\\GITHUB-PROJECTS\\SMTP-MailSender\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\rede.png")){
+            if (fileName.equals(System.getProperty("user.dir")+"\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\rede.png")){
                 messageBodyPart = new MimeBodyPart();
                 messageBodyPart.setContent("<h1>Attached Image</h1>" +
                         "<img src='cid:image_id'>", "text/html");

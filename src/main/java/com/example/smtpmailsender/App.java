@@ -87,9 +87,9 @@ public class App {
                     int choice = 0;
                     choice = scan.nextInt();
                     if (choice == 1){MailSender.sendAttachmentEmail(SMTPsession,toMail,subject,body,
-                            "C:\\Users\\Igor Rosa\\Desktop\\GITHUB-PROJECTS\\SMTP-MailSender\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\rede.png");}
+                            System.getProperty("user.dir")+"\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\rede.png");}
                     else{ MailSender.sendAttachmentEmail(SMTPsession,toMail,subject,body,
-                            "C:\\Users\\Igor Rosa\\Desktop\\GITHUB-PROJECTS\\SMTP-MailSender\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\attachment.txt");}
+                            System.getProperty("user.dir")+"\\src\\main\\java\\com\\example\\smtpmailsender\\resources\\attachment.txt");}
                 }else {
                     MailSender.sendEmail(SMTPsession, toMail, subject, body);
                 }
