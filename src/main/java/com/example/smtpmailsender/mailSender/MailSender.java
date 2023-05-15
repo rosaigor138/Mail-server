@@ -19,7 +19,7 @@ import javax.mail.internet.MimeMultipart;
 
 public class MailSender {
 
-    public  static void sendEmail(Session session, String toMail, String subject, String body){
+    public  static void sendEmail(Session session, String toMail, String subject, String body) throws Exception{
         try {
             MimeMessage msg = new MimeMessage(session);
             msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
